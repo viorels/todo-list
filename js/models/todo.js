@@ -17,7 +17,7 @@ var app = app || {};
 			title: '',
 			completed: false,
 			priority: 1,
-			due: null,
+			due: new Date(),
 		},
 
 		// Toggle the `completed` state of this todo item.
@@ -25,6 +25,10 @@ var app = app || {};
 			this.save({
 				completed: !this.get('completed')
 			});
+		},
+
+		dueDescription: function () {
+			return 'today';
 		},
 
 		nextPriority: function () {

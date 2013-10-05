@@ -36,6 +36,7 @@ var app = app || {};
 		// Re-render the titles of the todo item.
 		render: function () {
 			this.$el.html(this.template(this.model.toJSON()));
+			this.$el.find('span.due').html(this.model.dueDescription());
 			this.$el.find('span.priority').html(this.model.priorityName());
 			this.$el.toggleClass('completed', this.model.get('completed'));
 			this.toggleVisible();
