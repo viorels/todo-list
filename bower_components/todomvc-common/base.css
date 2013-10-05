@@ -25,7 +25,7 @@ body {
 	line-height: 1.4em;
 	background: #eaeaea url('bg.png');
 	color: #4d4d4d;
-	width: 550px;
+	width: 750px;
 	margin: 0 auto;
 	-webkit-font-smoothing: antialiased;
 	-moz-font-smoothing: antialiased;
@@ -214,6 +214,7 @@ body {
 }
 
 #todo-list li label {
+	width: 506px;
 	word-break: break-word;
 	padding: 15px;
 	margin-left: 45px;
@@ -224,6 +225,22 @@ body {
 	-ms-transition: color 0.4s;
 	-o-transition: color 0.4s;
 	transition: color 0.4s;
+}
+
+#todo-list li span.priority {
+	position: absolute;
+	top: 0;
+	right: 50px;
+	bottom: 0;
+	width: 100px;
+	height: 20px;
+	margin: auto 0;
+	font-size: 22px;
+	-webkit-transition: all 0.2s;
+	-moz-transition: all 0.2s;
+	-ms-transition: all 0.2s;
+	-o-transition: all 0.2s;
+	transition: all 0.2s;
 }
 
 #todo-list li.completed label {
@@ -513,7 +530,7 @@ hr {
 		left: 8px;
 	}
 	/**body*/.learn-bar #todoapp {
-		width: 550px;
+		width: 750px;
 		margin: 130px auto 40px auto;
 	}
 }
