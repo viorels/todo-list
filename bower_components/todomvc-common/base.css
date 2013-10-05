@@ -149,30 +149,6 @@ body {
 	border-top: 1px dotted #adadad;
 }
 
-label[for='toggle-all'] {
-	display: none;
-}
-
-#toggle-all {
-	position: absolute;
-	top: -42px;
-	left: -4px;
-	width: 40px;
-	text-align: center;
-	border: none; /* Mobile Safari */
-}
-
-#toggle-all:before {
-	content: '»';
-	font-size: 28px;
-	color: #d9d9d9;
-	padding: 0 25px 7px;
-}
-
-#toggle-all:checked:before {
-	color: #737373;
-}
-
 #todo-list {
 	margin: 0;
 	padding: 0;
@@ -388,24 +364,12 @@ label[for='toggle-all'] {
 	Can't use it globally since it destroys checkboxes in Firefox and Opera
 */
 @media screen and (-webkit-min-device-pixel-ratio:0) {
-	#toggle-all,
 	#todo-list li .toggle {
 		background: none;
 	}
 
 	#todo-list li .toggle {
 		height: 40px;
-	}
-
-	#toggle-all {
-		top: -56px;
-		left: -15px;
-		width: 65px;
-		height: 41px;
-		-webkit-transform: rotate(90deg);
-		transform: rotate(90deg);
-		-webkit-appearance: none;
-		appearance: none;
 	}
 }
 
