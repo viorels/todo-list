@@ -7,8 +7,6 @@ var app = app || {};
 	// Todo Model
 	// ----------
 
-	var priorityNames = ['Low', 'Medium', 'High'];
-
 	// Our basic **Todo** model has `title`, `order`, and `completed` attributes.
 	app.Todo = Backbone.Model.extend({
 		// Default attributes for the todo
@@ -27,18 +25,23 @@ var app = app || {};
 			});
 		},
 
+		dueDateFormat: "mm/dd/yy",
+
 		dueDescription: function () {
-			return 'today';
+			var date = new Date(this.get('due'));
+			return $.datepicker.formatDate(this.dueDateFormat, date);
 		},
+
+		priorityNames: ['Low', 'Medium', 'High'],
 
 		nextPriority: function () {
 			this.save({
-				priority: (this.get('priority') + 1) % priorityNames.length,
+				priority: (this.get('priority') + 1) % this.priorityNames.length,
 			});
 		},
 
 		priorityName: function() {
-			return priorityNames[this.get('priority')];
+			return this.priorityNames[this.get('priority')];
 		}
 	});
 })();

@@ -19,9 +19,11 @@ var app = app || {};
 		events: {
 			'click .toggle': 'toggleCompleted',
 			'dblclick label': 'edit',
+			'click .priority': 'changePriority',
+			'click .due': 'selectDue',
 			'click .destroy': 'clear',
 			'keypress .edit': 'updateOnEnter',
-			'blur .edit': 'close'
+			'blur .edit': 'close',
 		},
 
 		// The TodoView listens for changes to its model, re-rendering. Since there's
@@ -36,7 +38,11 @@ var app = app || {};
 		// Re-render the titles of the todo item.
 		render: function () {
 			this.$el.html(this.template(this.model.toJSON()));
-			this.$el.find('span.due').html(this.model.dueDescription());
+			this.$('.due').html(this.model.dueDescription());
+			var todoView = this;
+			this.$('.due-edit').val(this.model.dueDescription()).datepicker({
+				onClose: function () { todoView.closeDue() },
+				minDate: 0});
 			this.$el.find('span.priority').html(this.model.priorityName());
 			this.$el.toggleClass('completed', this.model.get('completed'));
 			this.toggleVisible();
@@ -81,11 +87,34 @@ var app = app || {};
 			this.$el.removeClass('editing');
 		},
 
+		// Close the `"due editing"` mode, saving changes to the todo.
+		closeDue: function () {
+			var trimmedValue = this.$input.val().trim();
+			this.$input.val(trimmedValue);
+
+			if (trimmedValue) { 	// TODO: valid date ?
+				this.model.save({ due: this.$('.due-edit').datepicker('getDate') });
+			} else {
+				this.clear();
+			}
+
+			this.$el.removeClass('editing-due');
+		},
+
 		// If you hit `enter`, we're through editing the item.
 		updateOnEnter: function (e) {
 			if (e.which === ENTER_KEY) {
 				this.close();
 			}
+		},
+
+		changePriority: function (e) {
+			this.model.nextPriority();
+		},
+
+		selectDue: function (e) {
+			this.$el.addClass('editing-due');
+			this.$('.due-edit').focus();
 		},
 
 		// Remove the item, destroy the model from *localStorage* and delete its view.
