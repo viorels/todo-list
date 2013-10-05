@@ -25,7 +25,7 @@ body {
 	line-height: 1.4em;
 	background: #eaeaea url('bg.png');
 	color: #4d4d4d;
-	width: 750px;
+	width: 550px;
 	margin: 0 auto;
 	-webkit-font-smoothing: antialiased;
 	-moz-font-smoothing: antialiased;
@@ -149,6 +149,30 @@ body {
 	border-top: 1px dotted #adadad;
 }
 
+label[for='toggle-all'] {
+	display: none;
+}
+
+#toggle-all {
+	position: absolute;
+	top: -42px;
+	left: -4px;
+	width: 40px;
+	text-align: center;
+	border: none; /* Mobile Safari */
+}
+
+#toggle-all:before {
+	content: '»';
+	font-size: 28px;
+	color: #d9d9d9;
+	padding: 0 25px 7px;
+}
+
+#toggle-all:checked:before {
+	color: #737373;
+}
+
 #todo-list {
 	margin: 0;
 	padding: 0;
@@ -214,7 +238,6 @@ body {
 }
 
 #todo-list li label {
-	width: 506px;
 	word-break: break-word;
 	padding: 15px;
 	margin-left: 45px;
@@ -225,30 +248,6 @@ body {
 	-ms-transition: color 0.4s;
 	-o-transition: color 0.4s;
 	transition: color 0.4s;
-}
-
-#todo-list li span.due {
-	position: absolute;
-	top: 0;
-	right: 50px;
-	bottom: 0;
-	width: 100px;
-	height: 20px;
-	margin: auto 0;
-	font-size: 22px;
-}
-
-#todo-list li span.priority {
-	position: absolute;
-	text-align: right;
-	top: 0;
-	right: 150px;
-	padding-right: 10px;
-	bottom: 0;
-	width: 100px;
-	height: 20px;
-	margin: auto 0;
-	font-size: 22px;
 }
 
 #todo-list li.completed label {
@@ -389,12 +388,24 @@ body {
 	Can't use it globally since it destroys checkboxes in Firefox and Opera
 */
 @media screen and (-webkit-min-device-pixel-ratio:0) {
+	#toggle-all,
 	#todo-list li .toggle {
 		background: none;
 	}
 
 	#todo-list li .toggle {
 		height: 40px;
+	}
+
+	#toggle-all {
+		top: -56px;
+		left: -15px;
+		width: 65px;
+		height: 41px;
+		-webkit-transform: rotate(90deg);
+		transform: rotate(90deg);
+		-webkit-appearance: none;
+		appearance: none;
 	}
 }
 
@@ -538,7 +549,7 @@ hr {
 		left: 8px;
 	}
 	/**body*/.learn-bar #todoapp {
-		width: 750px;
+		width: 550px;
 		margin: 130px auto 40px auto;
 	}
 }
