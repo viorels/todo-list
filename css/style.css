@@ -2,6 +2,29 @@ body {
 	width: 750px;
 }
 
+header div.sort {
+	padding-top: 2px;
+	border-top: 1px dotted #adadad;
+}
+
+header span.name {
+	padding-left: 60px;
+}
+
+header span.priority {
+	position: absolute;
+	text-align: right;
+	right: 170px;
+	padding-right: 10px;
+	width: 100px;
+}
+
+header span.due {
+	position: absolute;
+	right: 60px;
+	width: 110px;
+}
+
 #todo-list li label {
 	width: 440px;
 }

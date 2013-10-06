@@ -13,6 +13,11 @@
 			<header id="header">
 				<h1>todos</h1>
 				<input id="new-todo" placeholder="What needs to be done?" autofocus>
+				<div class="sort">
+					<span class="name">Task</span>
+					<span class="priority"><a href="#/active/priority/-1">Priority</a></span>
+					<span class="due"><a href="#/active/due/1">Due</a></span>
+				</div>
 			</header>
 			<section id="main">
 				<ul id="todo-list"></ul>
@@ -27,8 +32,8 @@
 			<div class="view">
 				<input class="toggle" type="checkbox" <%= completed ? 'checked' : '' %>>
 				<label><%- title %></label>
-				<span class="due"></span>
 				<span class="priority"></span>
+				<span class="due"></span>
 				<button class="destroy"></button>
 			</div>
 			<input class="edit" value="<%- title %>">

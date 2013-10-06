@@ -62,7 +62,10 @@ var app = app || {};
 					.removeClass('selected')
 					.filter('[href="#/' + (app.TodoFilter || '') + '"]')
 					.addClass('selected');
+
+				this.addAll();
 			} else {
+				this.$('header div.sort').hide();
 				this.$main.hide();
 				this.$footer.hide();
 			}

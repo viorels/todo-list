@@ -39,7 +39,12 @@ var app = app || {};
 
 		// Todos are sorted by their original insertion order.
 		comparator: function (todo) {
-			return todo.get('order');
+			var value = todo.get(app.TodoSortField || 'order');
+			if (app.TodoSortField == 'due') {
+				value = $.datepicker.formatDate('@', new Date(value));
+			}
+			var order = parseInt(app.TodoSortOrder);
+			return value * order;
 		}
 	});
 
