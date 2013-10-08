@@ -65,7 +65,6 @@ var app = app || {};
 
 				this.addAll();
 			} else {
-				this.$('header div.sort').hide();
 				this.$main.hide();
 				this.$footer.hide();
 			}

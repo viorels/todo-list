@@ -14,7 +14,7 @@ header span.name {
 header span.priority {
 	position: absolute;
 	text-align: right;
-	right: 170px;
+	right: 190px;
 	padding-right: 10px;
 	width: 100px;
 }
@@ -22,15 +22,15 @@ header span.priority {
 header span.due {
 	position: absolute;
 	right: 60px;
-	width: 110px;
+	width: 130px;
 }
 
 #todo-list li label {
-	width: 440px;
+	width: 420px;
 }
 
 #todo-list li.editing .edit {
-	width: 440px;
+	width: 420px;
 }
 
 #todo-list li span.due {
@@ -38,7 +38,7 @@ header span.due {
 	top: 0;
 	right: 60px;
 	bottom: 0;
-	width: 110px;
+	width: 130px;
 	height: 20px;
 	margin: auto 0;
 	font-size: 22px;
@@ -50,7 +50,7 @@ header span.due {
 
 #todo-list li.editing-due .due-edit {
 	display: block;
-	width: 110px;
+	width: 130px;
 	padding: 12px 1px 10px 1px;
 	position: absolute;
 	top: 0;
@@ -70,7 +70,7 @@ header span.due {
 	position: absolute;
 	text-align: right;
 	top: 0;
-	right: 170px;
+	right: 190px;
 	padding-right: 10px;
 	bottom: 0;
 	width: 100px;

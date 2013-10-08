@@ -41,6 +41,7 @@ var app = app || {};
 			this.$('.due').html(this.model.dueDescription());
 			var todoView = this;
 			this.$('.due-edit').val(this.model.dueDescription()).datepicker({
+				dateFormat: this.model.dateFormat,
 				onClose: function () { todoView.closeDue() },
 				minDate: 0});
 			this.$el.find('span.priority').html(this.model.priorityName());

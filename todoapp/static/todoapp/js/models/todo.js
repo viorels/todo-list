@@ -25,7 +25,7 @@ var app = app || {};
 			});
 		},
 
-		dueDateFormat: "mm/dd/yy",
+		dueDateFormat: "M d, yy",
 
 		dueDescription: function () {
 			var date = new Date(this.get('due'));
