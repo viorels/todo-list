@@ -89,15 +89,9 @@ var app = app || {};
 
 		// Close the `"due editing"` mode, saving changes to the todo.
 		closeDue: function () {
-			var trimmedValue = this.$input.val().trim();
-			this.$input.val(trimmedValue);
-
-			if (trimmedValue) { 	// TODO: valid date ?
-				this.model.save({ due: this.$('.due-edit').datepicker('getDate') });
-			} else {
-				this.clear();
-			}
-
+			var due = this.$('.due-edit').datepicker('getDate');
+			var dueISO_8601 = $.datepicker.formatDate($.datepicker.ISO_8601, due)
+			this.model.save({ due: dueISO_8601 });
 			this.$el.removeClass('editing-due');
 		},
 
