@@ -37,11 +37,10 @@ class UserObjectsOnlyAuthorization(Authorization):
         return bundle.obj.user == bundle.request.user
 
     def delete_list(self, object_list, bundle):
-        # Sorry user, no deletes for you!
-        raise Unauthorized("Sorry, no deletes.")
+        return bundle.obj.user == bundle.request.user
 
     def delete_detail(self, object_list, bundle):
-        raise Unauthorized("Sorry, no deletes.")
+        return bundle.obj.user == bundle.request.user
 
 
 class UserResource(ModelResource):
@@ -49,7 +48,8 @@ class UserResource(ModelResource):
         queryset = get_user_model().objects.all()
         resource_name = 'user'
         fields = ['username', 'first_name']
-        allowed_methods = ['get']
+        detail_allowed_methods = ['get']
+        list_allowed_methods = []
 
 
 class TodoResource(ModelResource):
@@ -61,3 +61,6 @@ class TodoResource(ModelResource):
         authentication = MultiAuthentication(BasicAuthentication(), SessionAuthentication())
         authorization = UserObjectsOnlyAuthorization()
 
+    def hydrate(self, bundle, request=None):
+        bundle.obj.user = bundle.request.user
+        return bundle
