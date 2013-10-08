@@ -6,6 +6,9 @@ var ENTER_KEY = 13;
 $(function () {
 	'use strict';
 
+	// Backbone CSRF token
+	Backbone.Tastypie.csrfToken = $.cookie( 'csrftoken' );
+
 	// kick things off by creating the `App`
 	new app.AppView();
 });
