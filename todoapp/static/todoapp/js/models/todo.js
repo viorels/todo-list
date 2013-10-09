@@ -11,11 +11,16 @@ var app = app || {};
 	app.Todo = Backbone.Model.extend({
 		// Default attributes for the todo
 		// and ensure that each todo created has `title` and `completed` keys.
-		defaults: {
-			title: '',
-			completed: false,
-			priority: 1,
-			due: new Date(),
+		defaults: function() {
+	        // get current date
+	        var now = new Date;
+	        // var date = now.getUTCFullYear() + '-' + now.getUTCMonth() + '-' + now.getUTCDate()
+	        return {
+				title: '',
+				completed: false,
+				priority: 1,
+				due: now,
+			};
 		},
 
 		// Toggle the `completed` state of this todo item.
