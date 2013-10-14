@@ -1,6 +1,7 @@
 # Django settings for todolist project.
 
 import os
+import django.conf.global_settings as DEFAULT_SETTINGS
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -106,6 +107,8 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+LOGIN_REDIRECT_URL = '/'
+
 ROOT_URLCONF = 'todolist.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
@@ -130,6 +133,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'tastypie',
     'backbone_tastypie',
+    'registration',
     'todoapp',
 )
 

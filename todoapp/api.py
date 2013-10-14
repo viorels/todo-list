@@ -58,7 +58,7 @@ class TodoResource(ModelResource):
     class Meta:
         queryset = Todo.objects.all()
         resource_name = 'todo'
-        authentication = MultiAuthentication(BasicAuthentication(), SessionAuthentication())
+        authentication = MultiAuthentication(SessionAuthentication(), BasicAuthentication())
         authorization = UserObjectsOnlyAuthorization()
         always_return_data = True
 

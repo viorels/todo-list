@@ -13,7 +13,7 @@
 	<body>
 		<section id="todoapp">
 			<header id="header">
-				<h1>{% if user.is_authenticated %}{{ user.get_short_name }}'s {% endif %}todos</h1>
+				<h1>{% if user.is_authenticated %}{{ user.username }}'s {% endif %}todos</h1>
 				<input id="new-todo" placeholder="What needs to be done?" autofocus>
 				<div class="sort">
 					<span class="name" data-sort="title"><a href="#/title/1">Task</a><span class="direction"></span></span>
@@ -29,6 +29,7 @@
 		<footer id="info">
 			<p>Double-click to edit a todo</p>
 			<p>Inspired by <a href="http://todomvc.com">TodoMVC</a> written by <a href="https://github.com/addyosmani">Addy Osmani</a></p>
+			<p><a href="{% url "auth_logout" %}">Logout</a></p>
 		</footer>
 		<script type="text/template" id="item-template">
 			<div class="view">
