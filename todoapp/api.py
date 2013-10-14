@@ -60,6 +60,7 @@ class TodoResource(ModelResource):
         resource_name = 'todo'
         authentication = MultiAuthentication(BasicAuthentication(), SessionAuthentication())
         authorization = UserObjectsOnlyAuthorization()
+        always_return_data = True
 
     def hydrate(self, bundle, request=None):
         bundle.obj.user = bundle.request.user
