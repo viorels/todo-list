@@ -10,6 +10,6 @@ if [ -z "$TITLE" ]; then
     exit 1
 fi
 
-curl -u $USER:$PASS -H "Content-Type: application/json" -X POST --data "{\"title\": \"$TITLE\"}" $TODO_URL/api/v1/todo
+curl -u $USER:$PASS -H "Content-Type: application/json" -X POST --data "{\"title\": \"$TITLE\"}" $TODO_URL/api/v1/todo/
 echo
 
