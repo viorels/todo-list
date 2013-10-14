@@ -58,9 +58,41 @@ var app = app || {};
 					remaining: remaining
 				}));
 
-				this.$('#filters li a')
+				this.$('header span a')
+					.each(function () {
+						var name = $(this).parent().data('sort');
+						$(this).attr('href', app.TodoRouter.urlForSort(name));
+					})
 					.removeClass('selected')
-					.filter('[href="#/' + (app.TodoFilter || '') + '"]')
+					.filter(function () {
+						return $(this).parent().data('sort') == app.TodoSortField;
+					})
+					.addClass('selected');
+
+				this.$('header span span.direction')
+					.each(function () {
+						if ($(this).parent().data('sort') == app.TodoSortField) {
+							if (app.TodoSortOrder > 0) {
+								$(this).html('&#x25BC;');
+							}
+							else {
+								$(this).html('&#x25B2;');
+							}
+						}
+						else {
+							$(this).empty();
+						}
+					});
+
+				this.$('#filters li a')
+					.each(function () {
+						var name = $(this).data('filter');
+						$(this).attr('href', app.TodoRouter.urlForFilter(name));
+					})
+					.removeClass('selected')
+					.filter(function () {
+						return $(this).data('filter') == (app.TodoFilter || '');
+					})
 					.addClass('selected');
 
 				this.addAll();

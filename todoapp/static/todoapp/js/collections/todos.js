@@ -37,13 +37,19 @@ var app = app || {};
 		},
 
 		// Todos are sorted by their original insertion order.
-		comparator: function (todo) {
-			var value = todo.get(app.TodoSortField || 'order');
+		comparator: function (todoA, todoB) {
+			var valueA = todoA.get(app.TodoSortField || 'order');
 			if (app.TodoSortField == 'due') {
-				value = $.datepicker.formatDate('@', new Date(value));
+				valueA = $.datepicker.formatDate('@', new Date(valueA));
 			}
-			var order = parseInt(app.TodoSortOrder);
-			return value * order;
+			var valueB = todoB.get(app.TodoSortField || 'order');
+			if (app.TodoSortField == 'due') {
+				valueB = $.datepicker.formatDate('@', new Date(valueB));
+			}
+			var order = app.TodoSortOrder;
+			if (valueA < valueB) return -order;
+			if (valueA > valueB) return order;
+			return 0;
 		}
 	});
 

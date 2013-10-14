@@ -16,9 +16,9 @@
 				<h1>{% if user.is_authenticated %}{{ user.get_short_name }}'s {% endif %}todos</h1>
 				<input id="new-todo" placeholder="What needs to be done?" autofocus>
 				<div class="sort">
-					<span class="name">Task</span>
-					<span class="priority"><a href="#/active/priority/-1">Priority</a></span>
-					<span class="due"><a href="#/active/due/1">Due</a></span>
+					<span class="name" data-sort="title"><a href="#/title/1">Task</a><span class="direction"></span></span>
+					<span class="priority" data-sort="priority"><span class="direction"></span><a href="#/priority/1">Priority</a></span>
+					<span class="due" data-sort="due"><a href="#/due/1">Due</a><span class="direction"></span></span>
 				</div>
 			</header>
 			<section id="main">
@@ -45,13 +45,13 @@
 			<span id="todo-count"><strong><%= remaining %></strong> <%= remaining === 1 ? 'item' : 'items' %> left</span>
 			<ul id="filters">
 				<li>
-					<a class="selected" href="#/">All</a>
+					<a class="selected" href="#/" data-filter="">All</a>
 				</li>
 				<li>
-					<a href="#/active">Active</a>
+					<a href="#/active" data-filter="active">Active</a>
 				</li>
 				<li>
-					<a href="#/completed">Completed</a>
+					<a href="#/completed" data-filter="completed">Completed</a>
 				</li>
 			</ul>
 			<% if (completed) { %>

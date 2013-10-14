@@ -25,6 +25,16 @@ header span.due {
 	width: 130px;
 }
 
+header span a.selected {
+	font-weight: bold;
+}
+
+header span a {
+	color: #83756f;
+	margin: 2px;
+	text-decoration: none;
+}
+
 #todo-list li label {
 	width: 420px;
 }
